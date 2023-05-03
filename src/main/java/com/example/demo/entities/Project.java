@@ -3,6 +3,7 @@ package com.example.demo.entities;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Project {
 	
 	@Id
-	private long projectId;
+	private Long projectId;
 	
 	private String name;
 	
@@ -32,7 +33,9 @@ public class Project {
 	private List<Employee> employees;
 	
 	public Project() {
-		
+		Random rand = new Random();
+		this.projectId = rand.nextLong(2500);
+		this.employees = new ArrayList<>();
 	}
 
 	public List<Employee> getEmployees() {
@@ -45,9 +48,12 @@ public class Project {
 
 	public Project(String name, String stage, String description) {
 		super();
+		Random rand = new Random();
+		this.projectId = rand.nextLong(2500);
 		this.name = name;
 		this.stage = stage;
 		this.description = description;
+		this.employees = new ArrayList<>();
 	}
 	
 	public Project(long projectId, String name, String stage, String description, Date startDate, Date endDate) {
@@ -57,6 +63,7 @@ public class Project {
 		this.name = name;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.employees = new ArrayList<>();
 	}
 
 	public long getProjectId() {

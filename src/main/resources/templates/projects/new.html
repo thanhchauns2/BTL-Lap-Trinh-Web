@@ -14,7 +14,7 @@
 		<form th:action="@{/projects/save}" th:object="${project}" method="POST">
 
 		<div class="form-group row">
-			<input type="text" placeholder="Project Name" th:field="*{name}">
+			<input type="text" placeholder="Project Name" th:field="${project.name}">
 		</div>
 
 		<div class="form-group row">

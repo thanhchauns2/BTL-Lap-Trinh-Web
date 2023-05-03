@@ -18,13 +18,13 @@ public class ProjectRepository {
     }
 
     public Project save(Project project) {
-        String sql = "INSERT INTO project (project_id, name, stage, description, start_date, end_date) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO projects (project_id, name, stage, description, start_date, end_date) VALUES (?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql, project.getProjectId(), project.getName(), project.getStage(), project.getDescription(), project.getStartDate(), project.getEndDate());
         return project;
     }
 
     public List<Project> findAll() {
-        String sql = "SELECT * FROM project";
+        String sql = "SELECT * FROM projects";
         List<Project> projects = jdbcTemplate.query(sql, (rs, rowNum) -> new Project(
                 rs.getLong("project_id"),
                 rs.getString("name"),
@@ -37,7 +37,7 @@ public class ProjectRepository {
     }
 
     public Project findByProjectId(long id) {
-        String sql = "SELECT * FROM project WHERE project_id = ?";
+        String sql = "SELECT * FROM projects WHERE project_id = ?";
         Project project = jdbcTemplate.queryForObject(sql, new Object[]{id}, (rs, rowNum) -> new Project(
                 rs.getLong("project_id"),
                 rs.getString("name"),
@@ -50,7 +50,9 @@ public class ProjectRepository {
     }
 
     public void delete(Project project) {
-        String sql = "DELETE FROM project WHERE project_id = ?";
+        String sql = "DELETE FROM project_employee WHERE project_id = ?";
+        jdbcTemplate.update(sql, project.getProjectId());
+        sql = "DELETE FROM projects WHERE project_id = ?";
         jdbcTemplate.update(sql, project.getProjectId());
     }
 

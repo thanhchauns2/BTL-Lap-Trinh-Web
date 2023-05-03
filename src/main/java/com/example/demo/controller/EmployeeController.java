@@ -43,13 +43,6 @@ public class EmployeeController {
 		return "redirect:/employees";
 	}
 	
-	@GetMapping("/delete")
-	public String deleteEmployee(@RequestParam("id") long theId, Model model) {
-		Employee theEmp = employeeService.findByEmployeeId(theId);
-		employeeService.delete(theEmp);
-		return "redirect:/employees";
-	}
-	
 	@GetMapping("/update")
 	public String displayEmployeeUpdateForm(@RequestParam("id") long theId, Model model) {
 		Employee theEmp = employeeService.findByEmployeeId(theId);

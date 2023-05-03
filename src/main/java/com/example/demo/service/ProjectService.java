@@ -18,11 +18,16 @@ public class ProjectService {
         return projectRepository.save(project);
     }
 
-    public List<Project> findAll() {
+    public List<Project> getAll() {
         return projectRepository.findAll();
     }
+    
     public void delete(Project project) {
     	projectRepository.delete(project);
+    }
+    
+    public Project findByProjectId(long id) {
+    	return projectRepository.findByProjectId(id);
     }
 
 	public Project save(Project project, List<Employee> includingEmployees) {

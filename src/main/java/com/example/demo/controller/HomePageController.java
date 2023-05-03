@@ -11,6 +11,6 @@ public class HomePageController {
 	@GetMapping
 	public String index() {
 		System.out.println("Hello");
-		return "/main/index";
+		return "main/index";
 	}
 }
