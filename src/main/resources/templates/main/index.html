@@ -38,13 +38,46 @@
 
 
 			<div class="col-md-4">
-				<canvas id="myPieChart" height="50" width="50"></canvas>
-
-				<script>
-					var chartData = "[[${projectStatusCnt}]]"
-				</script>
-
+			    <canvas id="myPieChart" height="500" width="500"></canvas>
+			
+			    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+			    <script>
+			        var chartData = "[[${projectStatusCnt}]]";
+			        //document.write(typeof chartData);
+			        //document.write(chartData);
+			        chartData = chartData.replace(/&quot;/g, '"');
+			        console.log(chartData);
+			        var parsedChartData = JSON.parse(chartData);
+			        console.log(parsedChartData);
+			        //chartData = JSON.parse(chartData);
+			        //document.write(JSON.parse(chartData));
+			        //document.write(chartData);
+			        var ctx = document.getElementById('myPieChart').getContext('2d');
+			        //document.write(ctx);
+			        //document.write(Object.keys(chartData));
+			        //document.write(Object.values(chartData));
+			        var myPieChart = new Chart(ctx, {
+			            type: 'pie',
+			            data: {
+			                labels: Object.keys(parsedChartData),
+			                datasets: [{
+			                    data: Object.values(parsedChartData),
+			                    backgroundColor: [
+			                        '#FF6384',
+			                        '#36A2EB',
+			                        '#FFCE56'
+			                    ],
+			                    hoverBackgroundColor: [
+			                        '#FF6384',
+			                        '#36A2EB',
+			                        '#FFCE56'
+			                    ]
+			                }]
+			            }
+			        });
+			    </script>
 			</div>
+
 
 		</div>
 	</div>
@@ -58,14 +91,14 @@
 						<tr>
 							<th> First Name </th>
 							<th> Last Name </th>
-							<th> Project Count </th>
+							<th> Email </th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="aEmployeeProjectCnt : ${employeesListProjectsCnt}">
-							<td th:text="${aEmployeeProjectCnt.firstName}"/>
-							<td th:text="${aEmployeeProjectCnt.lastName}"/>
-							<td th:text="${aEmployeeProjectCnt.projectCount}"/>
+						<tr th:each="employee : ${employeesList}">
+							<td th:text="${employee.firstName}"/>
+							<td th:text="${employee.lastName}"/>
+							<td th:text="${employee.email}"/>
 						</tr>
 
 					</tbody>

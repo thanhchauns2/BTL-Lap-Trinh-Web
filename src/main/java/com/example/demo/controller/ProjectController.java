@@ -48,7 +48,7 @@ public class ProjectController {
 	@PostMapping("/save")
 	public String save(@Valid Project project, BindingResult result, @RequestParam("employees") List<Long> employeeIds, Model model) {
 	    if (result.hasErrors()) {
-	    	System.out.println("vcl");
+//	    	System.out.println("vcl");
 	    }
 	    
 	    List<Employee> employees = new ArrayList<>();
