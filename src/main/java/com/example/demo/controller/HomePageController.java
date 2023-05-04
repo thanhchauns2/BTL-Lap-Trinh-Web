@@ -42,15 +42,6 @@ public class HomePageController {
 	            .collect(Collectors.groupingBy(Project::getStage, Collectors.counting()));
 		System.out.println(projectStatusCnt.toString());
 		
-//		js completed = new js("COMPLETED", projectStatusCnt.get("COMPLETED"));
-//		js inprogress = new js("INPROGRESS", projectStatusCnt.get("INPROGRESS"));
-//		js notstarted = new js("NOTSTARTED", projectStatusCnt.get("NOTSTARTED"));
-		
-//		List<js> JS = new ArrayList<>();
-//		if (notstarted.getValue() != null) JS.add(notstarted);
-//		if (inprogress.getValue() != null) JS.add(inprogress);
-//		if (completed.getValue() != null) JS.add(completed);
-		
 		String json = null;
 		try {
 		    json = objectMapper.writeValueAsString(projectStatusCnt);
@@ -64,21 +55,8 @@ public class HomePageController {
 		return "main/index";
 	}
 	
-	public class js{
-		public Long value;
-		public String label;
-		
-		public js() {
-			this.value = 0L;
-			this.label = "";
-		}
-		public js(String l, Long v) {
-			this.value = v;
-			this.label = l;
-		}
-		
-		public Long getValue() {
-			return this.value;
-		}
+	@GetMapping("/about")
+	public String about(Model model) {
+		return "main/about";
 	}
 }
