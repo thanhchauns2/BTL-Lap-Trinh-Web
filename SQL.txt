@@ -1,15 +1,35 @@
 create database BTL_STS;
 use btl_sts;
+
+drop table project_employee;
+drop table employee;
+drop table projects;
+
 CREATE TABLE employee (
-  employee_id INT NOT NULL AUTO_INCREMENT,
+  employee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(50) NOT NULL,
   last_name VARCHAR(50) NOT NULL,
   email VARCHAR(255) NOT NULL,
-  PRIMARY KEY (employee_id)
+  active int not null,
+  user varchar(20) not null,
+  password varchar(20) not null,
+  role varchar(20)
+);
+
+CREATE TABLE project_employee (
+    project_id BIGINT,
+    employee_id INT,
+    CONSTRAINT FK_PROJECT_ID FOREIGN KEY (project_id) REFERENCES projects(project_id),
+    CONSTRAINT FK_EMPLOYEE_ID FOREIGN KEY (employee_id) REFERENCES employee(employee_id),
+    PRIMARY KEY (project_id, employee_id)
 );
 
 select * from employee;
-INSERT INTO employee (employee_id, first_name, last_name, email) VALUES (1, "1", "1", "1");
+INSERT INTO employee (employee_id, first_name, last_name, email, active, user, password, role)
+VALUES (999, "Viet","Dang Bao","viet@gmail.com", "0","vietdb", "123456", "admin");
+
+INSERT INTO employee (employee_id, first_name, last_name, email, active, user, password, role)
+VALUES (998, "Chau","Nguyen Thanh","chau@gmail.com", "0", "chaunt", "123456", "user");
 
 CREATE TABLE projects (
   project_id BIGINT PRIMARY KEY,
@@ -21,11 +41,3 @@ CREATE TABLE projects (
 );
 
 select * from projects;
-
-CREATE TABLE project_employee (
-    project_id BIGINT,
-    employee_id INT,
-    CONSTRAINT FK_PROJECT_ID FOREIGN KEY (project_id) REFERENCES projects(project_id),
-    CONSTRAINT FK_EMPLOYEE_ID FOREIGN KEY (employee_id) REFERENCES employee(employee_id),
-    PRIMARY KEY (project_id, employee_id)
-);

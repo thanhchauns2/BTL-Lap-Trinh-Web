@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header"></head>
+
+<nav th:replace="layouts :: notlogin"></nav>
+
+
+<body>
+
+	<br>
+	<div class="container">
+		<br>
+		<h3>User Login </h3><hr>
+				
+		<form th:action="@{/checkLogin}" method="post">
+    		<div class="form-group">
+      			<label for="usr">Usename:</label>
+     			<input type="text" class="form-control" id="usr" name="username" value="">
+    		</div>
+    		<div class="form-group">
+			     <label for="pwd">Password:</label>
+			     <input type="password" class="form-control" id="pwd" name="pass" value="">
+    		</div>
+	    	<button type="submit" class="btn btn-info col-2">Submit</button>
+  		</form>
+		
+	</div>
+
+</body>
+
+</html>

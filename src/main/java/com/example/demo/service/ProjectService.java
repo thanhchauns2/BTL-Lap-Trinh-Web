@@ -34,4 +34,9 @@ public class ProjectService {
 		// TODO Auto-generated method stub
 		return projectRepository.save(project, includingEmployees);
 	}
+	
+	public List<Long> findProjectIdByEmployeeId(long id) {
+    	return projectRepository.findProjectIdByEmployeeId(id);
+    }
+
 }

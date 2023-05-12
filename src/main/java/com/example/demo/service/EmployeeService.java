@@ -29,4 +29,20 @@ public class EmployeeService {
     public Employee findByEmployeeId(long id) {
     	return employeeRepository.findByEmployeeId(id);
     }
+    
+    public void activeOff(long id) {
+        employeeRepository.activeOff(id);
+    }
+    
+    public void activeOn(long id) {
+        employeeRepository.activeOn(id);
+    }
+    
+    public Employee findActiveUser(long id) {
+    	return employeeRepository.findActiveUser(id);
+    }
+    
+    public Employee changePassUser(Employee employee) {
+    	return employeeRepository.changePassUser(employee);
+    }
 }

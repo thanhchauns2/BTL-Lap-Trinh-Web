@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header"></head>
+
+<nav th:replace="layouts :: navbar"></nav>
+
+
+<body>
+
+	<br>
+	<div class="container">
+		<br>
+		<h3> Change Username and Password </h3><hr>
+				
+		<form th:action="@{/employees/savepwd(id=${employee.employeeId})}" th:object="${employee}" method="post">
+    		<div class="form-group">
+      			<label for="usr">New Usename:</label>
+     			<input type="text" class="form-control" id="usr" name="username" value="">
+    		</div>
+    		<div class="form-group">
+			     <label for="pwd">New Password:</label>
+			     <input type="password" class="form-control" id="pwd" name="pass" value="">
+    		</div>
+	    	<button type="submit" class="btn btn-info col-2">Change</button>
+  		</form>
+		
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head th:replace="layouts :: head">
+	</head>
+
+	<body>
+
+	<nav th:replace="layouts :: navbar"></nav>
+
+		<div class="container">
+			<br>
+			<h3>Sent Message</h3>
+			<hr>
+
+			<!--  Add New Project Button -->
+			<a th:href="@{/employees/newano}"
+				class="btn btn-warning btn-sm mb-3">
+				Create an message
+			</a>
+			<table class="table table-bordered table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th>Email</th>
+						<th>Content</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="aMessage : ${messsend}">
+						<td th:text="${aMessage.receiveEmail}"/>
+						<td th:text="${aMessage.content}"/>
+					</tr>
+				</tbody>
+
+			</table>
+			<br>
+			<h3>Received Message</h3>
+			<hr>
+			<table class="table table-bordered table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th>Email</th>
+						<th>Content</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="aMessage : ${messrec}">
+						<td th:text="${aMessage.sendEmail}"/>
+						<td th:text="${aMessage.content}"/>
+					</tr>
+				</tbody>
+
+			</table>
+		</div>
+	</body>
+
+</html>

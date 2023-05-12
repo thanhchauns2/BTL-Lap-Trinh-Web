@@ -78,4 +78,19 @@ public class ProjectController {
 		model.addAttribute("allEmployees", allEmployees);
 		return "projects/new";
 	}
+	
+	@GetMapping("/inforproject")
+	public String userProjects(Model model) {
+	    Employee emp = employeeService.findActiveUser(1);
+	    List<Long> ids = projectService.findProjectIdByEmployeeId(emp.getEmployeeId());
+
+	    List<Project> projects = new ArrayList<>();
+	    for(long id : ids) {
+	        Project project = projectService.findByProjectId(id);
+	        projects.add(project);
+	    }
+
+	    model.addAttribute("projects", projects);
+	    return "/projects/user-projects";
+	}
 }

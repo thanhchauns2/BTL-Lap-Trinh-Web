@@ -13,7 +13,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Project {
-	
 	@Id
 	private Long projectId;
 	
@@ -46,7 +45,7 @@ public class Project {
 		this.employees = employees;
 	}
 
-	public Project(String name, String stage, String description) {
+	public Project(String name, String stage, String description, long userId) {
 		super();
 		Random rand = new Random();
 		this.projectId = rand.nextLong(2500);

@@ -7,18 +7,13 @@
 
 	<body>
 
-	<nav th:replace="layouts :: navbar"></nav>
+	<nav th:replace="layouts :: user"></nav>
 
 		<div class="container">
 			<br>
 			<h3>Projects Directory</h3>
 			<hr>
 
-			<!--  Add New Project Button -->
-			<a th:href="@{/projects/new}"
-				class="btn btn-primary btn-sm mb-3">
-				New Project
-			</a>
 			<table class="table table-bordered table-striped">
 				<thead class="thead-dark">
 					<tr>
@@ -27,7 +22,6 @@
 						<th>Description</th>
 						<th>Start Date</th>
 						<th>End Date</th>
-						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -37,19 +31,6 @@
 						<td th:text="${aProject.description}"/>
 						<td th:text="${aProject.startDate}"/>
 						<td th:text="${aProject.endDate}"/>
-						<td>
-							<a th:href="@{/projects/update(id=${aProject.projectId})}"
-								class="btn btn-info btn-sm">
-								Update
-							</a>
-
-							<a th:href="@{/projects/delete(id=${aProject.projectId})}"
-								class="btn btn-danger btn-sm"
-								onClick="if (!(confirm('Are you sure you want to delete this Project?'))) return false">
-								Delete
-							</a>
-
-						</td>
 					</tr>
 				</tbody>
 

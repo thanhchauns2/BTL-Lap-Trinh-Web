@@ -6,14 +6,14 @@
 
 <body>
 
-<nav th:replace="layouts :: navbar"></nav>
+<nav th:replace="layouts :: notlogin"></nav>
 
 	<br>
 	<div class="container">
 		<br>
-		<h3>Add New Employee</h3><hr>
-
-		 <form th:action="@{/employees/save}" th:object="${employee}" method="POST">
+		<h3>Signup User</h3><hr>
+		
+		 <form th:action="@{/signed}" th:object="${employee}" method="POST">
 
 
 		<!--  This will be used to bind to the employee that was clicked on (USED FOR UPDATES)-->
@@ -61,7 +61,7 @@
 			<td><input type="radio" name="role" value="admin">Admin</td>
 		</div>
 
-		<button class="btn btn-info col-2" type="submit">Enter Employee</button>
+		<button class="btn btn-info col-2" type="submit">Signup</button>
 
 		</form>
 	</div>

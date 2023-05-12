@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header"></head>
+
+<nav th:replace="layouts :: navbar"></nav>
+
+
+<body>
+
+	<br>
+	<div class="container">
+		<br>
+		<h3>New message</h3><hr>
+				
+		<form th:action="@{/employees/saveano}" method="post">
+    		<div class="form-group">
+      			<label for="usr">Email Receive:</label>
+     			<input type="text" class="form-control" id="usr" name="receive" value="">
+    		</div>
+    		<div class="form-group">
+			     <label for="pwd">Content:</label>
+			     <input type="text" class="form-control" id="pwd" name="content" value="">
+    		</div>
+	    	<button type="submit" class="btn btn-info col-2">Send</button>
+  		</form>
+		
+	</div>
+
+</body>
+
+</html>

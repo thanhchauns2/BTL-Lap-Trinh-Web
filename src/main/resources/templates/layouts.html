@@ -15,39 +15,118 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-	 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	  <link rel="stylesheet" href="/resources/demos/style.css">
-	  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="/resources/demos/style.css">
+	  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+	<style>  	
+		footer {
+	  		background-color:aquamarine;
+	  		padding: 10px;
+		}
+		body {
+			background-color: ghostwhite;
+		}
+		#t1 tr td:first-child {
+			background-color: rgb(57, 57, 57);
+		}
+		#c1 {
+			color: ghostwhite;
+			font-weight: bold;
+		}
+	</style>
 
 </head>
 
 
 	<nav th:fragment = "navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="/"> Project IO</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
-
+		<a id=c1> ADMIN</a>
 	  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-	    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-	      <li class="nav-item active">
-	        <a class="nav-link" th:href="@{/}">Home</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" th:href="@{/employees}">Employees</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" th:href="@{/projects}">Projects</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" th:href="@{/about}">About</a>
-	      </li>
-
+	    <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
+			
+			<a class="navbar-brand" href="/"> HOME</a>
+	  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+	    		<span class="navbar-toggler-icon"></span>
+	  		</button>
+	      
+			<li class="nav-item">
+			    <a class="nav-link" th:href="@{/index}">Dashboard</a>
+			</li>
+			<li class="nav-item">
+			    <a class="nav-link" th:href="@{/infor}">Information</a>
+			</li>
+			<li class="nav-item">
+			    <a class="nav-link" th:href="@{/employees}">Employees</a>
+			</li>
+			<li class="nav-item">
+			    <a class="nav-link" th:href="@{/employees/anotation}">Message</a>
+			</li>
+			<li class="nav-item">
+			    <a class="nav-link" th:href="@{/projects}">Projects</a>
+			</li>
+			<li class="nav-item">
+			    <a class="nav-link" th:href="@{/about}">About</a>
+			</li>
+			<li class="nav-item">
+	        	<a class="nav-link" th:href="@{/logout}"
+	        	onClick="if (!(confirm('Are you sure you want to logout?'))) return false">
+					Logout</a>
+			</li>
 	    </ul>
 	  </div>
 	</nav>
-
-
+	
+	<nav th:fragment = "user" class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a id=c1> USER</a>
+	  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+	    <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
+			
+			<a class="navbar-brand" href="/"> HOME</a>
+	  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+	    		<span class="navbar-toggler-icon"></span>
+	  		</button>
+	      
+			<li class="nav-item">
+			    <a class="nav-link" th:href="@{/infor}">Information</a>
+			</li>
+			<li class="nav-item">
+			    <a class="nav-link" th:href="@{/about}">About</a>
+			</li>
+			<li class="nav-item">
+			    <a class="nav-link" th:href="@{/employees/anotation}">Message</a>
+			</li>
+			<li class="nav-item">
+			    <a class="nav-link" th:href="@{/projects/inforproject}">Project</a>
+			</li>
+			<li class="nav-item">
+	        	<a class="nav-link" th:href="@{/logout}"
+	        	onClick="if (!(confirm('Are you sure you want to logout?'))) return false">
+					Logout</a>
+			</li>
+	    </ul>
+	  </div>
+	</nav>
+	
+	<nav th:fragment = "notlogin" class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+	    <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
+			
+			<a class="navbar-brand" href="/"> HOME</a>
+	  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+	    		<span class="navbar-toggler-icon"></span>
+	  		</button>
+			<li class="nav-item">
+			    <a class="nav-link" th:href="@{/about}">About</a>
+			</li>
+			<li class="nav-item">
+	        	<a class="nav-link" th:href="@{/login}">Login</a>
+			</li>
+			<li class="nav-item">
+	        	<a class="nav-link" th:href="@{/signup}">Signup</a>
+			</li>
+	    </ul>
+	  </div>
+	</nav>
 
 </html>

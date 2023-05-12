@@ -79,4 +79,10 @@ public class ProjectRepository {
 		}
 		return project;
 	}
+	
+	public List<Long> findProjectIdByEmployeeId(long id) {
+	    String sql = "SELECT project_id FROM project_employee WHERE employee_id = ?";
+	    List<Long> projects_id = jdbcTemplate.queryForList(sql, new Object[]{id}, Long.class);
+	    return projects_id;
+	}
 }

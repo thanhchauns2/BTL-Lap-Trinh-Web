@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head th:replace="layouts :: header"></head>
+
+	<body>
+
+	<nav th:replace="layouts :: navbar"></nav>
+
+		<div class="container">
+			<br>
+			<h3>Admin Information</h3>
+			<hr>
+			<br>
+
+			<table class="table table-bordered table-striped" id="t1">
+				<tbody>
+					<tr>
+						<td id="c1">ID</td>
+						<td th:text="${employee.employeeId}"/>
+					</tr>
+					<tr>
+						<td id="c1">First Name</td>
+						<td th:text="${employee.firstName}"/>
+					</tr>
+					<tr>
+						<td id="c1">Last Name</td>
+						<td th:text="${employee.lastName}"/>
+					</tr>
+					<tr>
+						<td id="c1">Email</td>
+						<td th:text="${employee.email}"/>
+					</tr>
+					<tr>
+						<td id="c1">Username</td>
+						<td th:text="${employee.user}"/>
+					</tr>
+					<tr>
+						<td id="c1">Role</td>
+						<td th:text="${employee.role}"/>
+					</tr>
+				</tbody>
+			</table>
+			
+			<a th:href="@{/employees/changepwd(id=${employee.employeeId})}" 
+				class="btn btn-warning btn-sm mb-3">
+				Change Password
+			</a>
+		</div>
+	</body>
+
+</html>
